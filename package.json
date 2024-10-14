@@ -34,7 +34,7 @@
   "dependencies": {
     "@prisma/client": "^5.14.0",
     "fs-extra": "^11.2.0",
-    "mi-service-lite": "^3.1.0",
+    "mi-service-lite": "git+https://github.com/Rocke1001feller/mi-service-lite.git#master",
     "openai": "^4.56.0",
     "prisma": "^5.14.0",
     "proxy-agent": "^6.4.0"
