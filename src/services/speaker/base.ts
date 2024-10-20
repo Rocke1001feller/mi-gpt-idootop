@@ -399,7 +399,7 @@ export class BaseSpeaker {
           const _text = encodeURIComponent(ttsText);
           const url = `${process.env.TTS_BASE_URL}/tts.mp3?speaker=${
             speaker || ""
-          }&text=${_text}`;
+          }&text=${encodeURIComponent(_text)}`;
           res = await play({ url });
           break;
         case "xiaoai":
