@@ -92,7 +92,7 @@ export class BaseSpeaker {
   config: MiServiceConfig;
   logger = Logger.create({ tag: "Speaker" });
   debug = false;
-  streamResponse = true;
+  streamResponse = false;
   checkInterval: number;
   checkTTSStatusAfter: number;
   tts: TTSProvider;
@@ -105,7 +105,7 @@ export class BaseSpeaker {
     this.config.timeout = config.timeout ?? 5000;
     const {
       debug = false,
-      streamResponse = true,
+      streamResponse = false,
       checkInterval = 1000,
       checkTTSStatusAfter = 3,
       tts = "xiaoai",
@@ -401,9 +401,7 @@ export class BaseSpeaker {
             speaker || ""
           }&text=${_text}`;
           console.log(`下发请求的 URL是：${doubao_url}`);
-          // res = await play({ url: doubao_url });
-          // await this.MiNA!.play({ url: this.audioBeep });
-          res = await this.MiNA!.play({ url: doubao_url });
+          res = await play({ url: doubao_url });
           break;
         case "xiaoai":
           console.log(`xiaoai: DEBUG：tts 不响应，目前怀疑：是请求没有正确下发到 TTS server`);

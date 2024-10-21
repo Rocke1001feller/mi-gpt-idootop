@@ -38,7 +38,7 @@ export type AISpeakerConfig = SpeakerConfig & {
    *
    * 当消息以召唤关键词开头时，会调用 AI 来响应用户消息
    *
-   * 比如：请，你，问问傻妞
+   * 比如：请，你
    */
   callAIKeywords?: string[];
   /**
@@ -52,7 +52,7 @@ export type AISpeakerConfig = SpeakerConfig & {
    *
    * 当消息中包含唤醒关键词时，会进入 AI 唤醒状态
    *
-   * 比如：打开/进入/召唤傻妞
+   * 比如：打开/进入
    */
   wakeUpKeywords?: string[];
   /**
@@ -60,19 +60,19 @@ export type AISpeakerConfig = SpeakerConfig & {
    *
    * 当消息中包含退出关键词时，会退出 AI 唤醒状态
    *
-   * 比如：关闭/退出/再见傻妞
+   * 比如：关闭/退出
    */
   exitKeywords?: string[];
   /**
    * 进入 AI 模式的欢迎语
    *
-   * 比如：你好，我是傻妞，很高兴认识你
+   * 比如：你好，我是豆包，很高兴认识你
    */
   onEnterAI?: string[];
   /**
    * 退出 AI 模式的提示语
    *
-   * 比如：傻妞已退出
+   * 比如：豆包已退出
    */
   onExitAI?: string[];
   /**
@@ -109,15 +109,15 @@ export class AISpeaker extends Speaker {
     super(config);
     const {
       askAI,
-      name = "傻妞",
+      name = "豆包",
       switchSpeakerKeywords,
-      callAIKeywords = ["请", "你", "傻妞"],
-      wakeUpKeywords = ["打开", "进入", "召唤"],
-      exitKeywords = ["关闭", "退出", "再见"],
-      onEnterAI = ["你好，我是傻妞，很高兴认识你"],
-      onExitAI = ["傻妞已退出"],
+      callAIKeywords = ["请", "你"],
+      wakeUpKeywords = ["开启", "打开", "进入", "开启连续对话", "打开连续对话", "换成豆包", "切换成豆包"],
+      exitKeywords = ["退下", "关闭", "退出", "再见", "闭嘴"],
+      onEnterAI = ["智能模式已开启，我是豆包，很高兴认识你"],
+      onExitAI = ["豆包已退出"],
       onAIAsking = ["让我先想想", "请稍等"],
-      onAIReplied = ["我说完了", "还有其他问题吗"],
+      onAIReplied = [],
       onAIError = ["啊哦，出错了，请稍后再试吧！"],
       audioActive = process.env.AUDIO_ACTIVE,
       audioError = process.env.AUDIO_ERROR,
