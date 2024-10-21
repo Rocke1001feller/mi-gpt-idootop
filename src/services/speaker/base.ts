@@ -401,7 +401,9 @@ export class BaseSpeaker {
             speaker || ""
           }&text=${_text}`;
           console.log(`下发请求的 URL是：${doubao_url}`);
-          res = await play({ url: doubao_url });
+          // res = await play({ url: doubao_url });
+          // await this.MiNA!.play({ url: this.audioBeep });
+          res = await this.MiNA!.play({ url: doubao_url });
           break;
         case "xiaoai":
           console.log(`xiaoai: DEBUG：tts 不响应，目前怀疑：是请求没有正确下发到 TTS server`);
