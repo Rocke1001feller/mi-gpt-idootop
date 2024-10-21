@@ -204,7 +204,7 @@ export class AISpeaker extends Speaker {
       {
         match: (msg) =>
           this.keepAlive ||
-          this.callAIKeywords.some((e) => msg.text.startsWith(e)),// TODO: 过滤条件，可以进一步的思考。比如：msg 中不包含【不包含小爱同学】的，全部 AI 回答。
+          this.callAIKeywords.some((e) => msg.text.includes(e)),// TODO: 过滤条件，可以进一步的思考。比如：msg 中不包含【不包含小爱同学】的，全部 AI 回答。
         run: (msg) => this.askAIForAnswer(msg),
       },
     ] as SpeakerCommand[];
