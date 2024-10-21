@@ -251,11 +251,11 @@ export class BaseSpeaker {
             playSFX: false,
             keepAlive: false,
           });
-          if (res === "break") {
-            // 终止回复
-            stream.cancel();
-            break;
-          }
+          // if (res === "break") {
+          //   // 终止回复
+          //   stream.cancel();
+          //   break;
+          // }
           replyText += nextSentence;
         }
         if (noMore) {
