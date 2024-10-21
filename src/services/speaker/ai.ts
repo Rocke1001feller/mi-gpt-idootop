@@ -111,7 +111,7 @@ export class AISpeaker extends Speaker {
       askAI,
       name = "豆包",
       switchSpeakerKeywords,
-      callAIKeywords = ["我", "如果", "请", "你", "假如"],// 单轮模式
+      callAIKeywords = ["我", "请", "你", "介绍"],// 单轮模式
       wakeUpKeywords = ["开启", "打开", "进入", "开启连续对话", "打开连续对话", "换成豆包", "切换成豆包"],
       exitKeywords = ["退下", "关闭", "退出", "再见", "闭嘴"],
       onEnterAI = ["智能模式已开启，我是豆包，很高兴认识你"],
@@ -204,7 +204,7 @@ export class AISpeaker extends Speaker {
       {
         match: (msg) =>
           this.keepAlive ||
-          this.callAIKeywords.some((e) => msg.text.includes(e)),// TODO: 过滤条件，可以进一步的思考。比如：msg 中不包含【不包含小爱同学】的，全部 AI 回答。
+          this.callAIKeywords.some((e) => msg.text.startsWith(e)),// TODO: 过滤条件，可以进一步的思考。比如：msg 中不包含【不包含小爱同学】的，全部 AI 回答。
         run: (msg) => this.askAIForAnswer(msg),
       },
     ] as SpeakerCommand[];
