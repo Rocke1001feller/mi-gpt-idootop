@@ -357,14 +357,14 @@ export class BaseSpeaker {
         if (!this.playingCommand) {
           playing = { ...playing, ...res };
         }
-        if (
-          hasNewMsg() ||
-          !this.responding || // 有新消息
-          (playing.status === "playing" && playing.media_type) // 小爱自己开始播放音乐
-        ) {
-          // 响应被中断
-          return "break";
-        }
+        // if (
+        //   hasNewMsg() ||
+        //   !this.responding || // 有新消息
+        //   (playing.status === "playing" && playing.media_type) // 小爱自己开始播放音乐
+        // ) {
+        //   // 响应被中断
+        //   return "break";
+        // }
         const isOk = retry.onResponse(res);
         if (isOk === "break") {
           break; // 获取设备状态异常
