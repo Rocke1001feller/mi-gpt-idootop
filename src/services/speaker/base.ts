@@ -397,14 +397,17 @@ export class BaseSpeaker {
       switch (tts) {
         case "custom":
           const _text = encodeURIComponent(ttsText);
-          const url = `${process.env.TTS_BASE_URL}/tts.mp3?speaker=${
+          const doubao_url = `${process.env.TTS_BASE_URL}/tts.mp3?speaker=${
             speaker || ""
-          }&text=${encodeURIComponent(_text)}`;
-          res = await play({ url });
+          }&text=${_text}`;
+          console.log(`下发请求的 URL是：${doubao_url}`);
+          res = await play({ url: doubao_url });
           break;
         case "xiaoai":
+          console.log(`xiaoai: DEBUG：tts 不响应，目前怀疑：是请求没有正确下发到 TTS server`);
         default:
           res = await play({ tts: ttsText });
+          console.log(`default: DEBUG: 内容是：${ttsText}`);
           break;
       }
     }
